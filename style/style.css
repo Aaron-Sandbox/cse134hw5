@@ -471,7 +471,7 @@ section#projects {
     order: -1;
 }
 
-@media (min-width: 985px) {
+@media (min-width: 650px) {
     .project > .divide-container::before {
         content: "";
         height: 1.2rem;
