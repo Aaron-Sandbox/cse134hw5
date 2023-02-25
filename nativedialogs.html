@@ -8,18 +8,19 @@
     <script>
 
         window.addEventListener('DOMContentLoaded', () => {
-          document.getElementById('alert').addEventListener('click', () => { alert("a built-in alert"); })
+          document.getElementById('alert').addEventListener('click', function () { alert("a built-in alert"); })
           document.getElementById('confirm').addEventListener('click', () => confirm("a built-in confirm"))
           document.getElementById('prompt').addEventListener('click', echo);
           document.getElementById('safeprompt').addEventListener('click', echo_safe);
         })
 
         function sanitize_xss(strings, str) {
-          return strings[0] + DomPurify.sanitize(str);
+          return strings[0] + DOMPurify.sanitize(str);
         }
 
-        function echo (input) {
-          let out_el = document.getElementsByClassName('output')[0];
+        function echo (e) {
+          input = prompt("prompt dialog");
+          let out_el = document.getElementsByTagName('output')[0];
           if (input) {
             out_el.value = `The value returned by the confirm method is : ${input}`;
           } else {
@@ -27,8 +28,9 @@
           }
         }
 
-        function echo_safe(input) {
-          let out_el = document.getElementsByClassName('output')[0];
+        function echo_safe(e) {
+          input = prompt("safe prompt dialog");
+          let out_el = document.getElementsByTagName('output')[0];
           if (input) {
             out_el.value = sanitize_xss`The value returned by the confirm method is : ${input}`;
           } else {
