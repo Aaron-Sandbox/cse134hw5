@@ -21,18 +21,18 @@
         function echo (input) {
           let out_el = document.getElementsByClassName('output')[0];
           if (input) {
-            out_el.textContent = `The value returned by the confirm method is : ${input}`;
+            out_el.value = `The value returned by the confirm method is : ${input}`;
           } else {
-            out_el.textContent = "User didn't enter anything";
+            out_el.value = "User didn't enter anything";
           }
         }
 
         function echo_safe(input) {
           let out_el = document.getElementsByClassName('output')[0];
           if (input) {
-            out_el.textContent = sanitize_xss`The value returned by the confirm method is : ${input}`;
+            out_el.value = sanitize_xss`The value returned by the confirm method is : ${input}`;
           } else {
-            out_el.textContent = "User didn't enter anything";
+            out_el.value = "User didn't enter anything";
           }
         }
     </script>
