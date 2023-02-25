@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Aaron Yu | Native Dialog</title>
-    <script type="text/javascript" src="dist/purify.min.js"></script>
+    <script type="text/javascript" src="scripts/purify.min.js"></script>
     <script>
-        document.getElementById('alert').addEventListener('click', () => { alert("a built-in alert"); })
-        document.getElementById('confirm').addEventListener('click', () => confirm("a built-in confirm"))
-        document.getElementById('prompt').addEventListener('click', echo);
-        document.getElementById('safeprompt').addEventListener('click', echo_safe);
+
+        window.addEventListener('DOMContentLoaded', () => {
+          document.getElementById('alert').addEventListener('click', () => { alert("a built-in alert"); })
+          document.getElementById('confirm').addEventListener('click', () => confirm("a built-in confirm"))
+          document.getElementById('prompt').addEventListener('click', echo);
+          document.getElementById('safeprompt').addEventListener('click', echo_safe);
+        })
 
         function sanitize_xss(strings, str) {
           return strings[0] + DomPurify.sanitize(str);
