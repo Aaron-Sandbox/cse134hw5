@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Aaron Yu | Native Dialog</title>
+    <script type="text/javascript" src="dist/purify.min.js"></script>
+    <script>
+        document.getElementById('alert').addEventListener('click', () => { alert("a built-in alert"); })
+        document.getElementById('confirm').addEventListener('click', () => confirm("a built-in confirm"))
+        document.getElementById('prompt').addEventListener('click', echo);
+        document.getElementById('safeprompt').addEventListener('click', echo_safe);
+
+        function sanitize_xss(strings, str) {
+          return strings[0] + DomPurify.sanitize(str);
+        }
+
+        function echo (input) {
+          let out_el = document.getElementsByClassName('output')[0];
+          if (input) {
+            out_el.textContent = `The value returned by the confirm method is : ${input}`;
+          } else {
+            out_el.textContent = "User didn't enter anything";
+          }
+        }
+
+        function echo_safe(input) {
+          let out_el = document.getElementsByClassName('output')[0];
+          if (input) {
+            out_el.textContent = sanitize_xss`The value returned by the confirm method is : ${input}`;
+          } else {
+            out_el.textContent = "User didn't enter anything";
+          }
+        }
+    </script>
+  </head>
+  <body>
+    <main>
+        <button id="alert">Alert</button>
+        <button id="confirm">Confirm</button>
+        <button id="prompt">Prompt</button>
+        <button id="safeprompt">Safe Prompt</button>
+        <output></output>
+    </main>
+  </body>
+</html>
