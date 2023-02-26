@@ -6,33 +6,25 @@
     <title>Aaron Yu | Native Dialog</title>
     <script type="text/javascript" src="scripts/purify.min.js"></script>
     <script>
-
         window.addEventListener('DOMContentLoaded', () => {
           document.getElementById('alert').addEventListener('click', function () { alert("a built-in alert"); })
-          document.getElementById('confirm').addEventListener('click', () => confirm("a built-in confirm"))
+          document.getElementById('confirm').addEventListener('click', () => {
+            let confirmed = confirm("a built-in confirm");
+            document.getElementsByTagName('output')[0].value = `The value returned by the confirm method is : ${confirmed}`;
+          })
           document.getElementById('prompt').addEventListener('click', echo);
-          document.getElementById('safeprompt').addEventListener('click', echo_safe);
+          document.getElementById('safeprompt').addEventListener('click', (e) => echo(e, true));
         })
 
         function sanitize_xss(strings, str) {
           return strings[0] + DOMPurify.sanitize(str);
         }
 
-        function echo (e) {
-          input = prompt("prompt dialog");
+        function echo(e, safe=false) {
           let out_el = document.getElementsByTagName('output')[0];
-          if (input) {
-            out_el.value = `The value returned by the confirm method is : ${input}`;
-          } else {
-            out_el.value = "User didn't enter anything";
-          }
-        }
-
-        function echo_safe(e) {
-          input = prompt("safe prompt dialog");
-          let out_el = document.getElementsByTagName('output')[0];
-          if (input) {
-            out_el.value = sanitize_xss`The value returned by the confirm method is : ${input}`;
+          let prompt_resp = prompt("What is your name?");
+          if (prompt_resp) {
+            out_el.value = safe ? sanitize_xss`Prompt result: ${prompt_resp}` : `Prompt result: ${prompt_resp}`;
           } else {
             out_el.value = "User didn't enter anything";
           }
