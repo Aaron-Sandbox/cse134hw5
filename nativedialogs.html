@@ -7,10 +7,14 @@
     <script type="text/javascript" src="scripts/purify.min.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-          document.getElementById('alert').addEventListener('click', function () { alert("a built-in alert"); })
+          document.getElementById('alert').addEventListener('click', function () { alert('a built-in alert'); })
           document.getElementById('confirm').addEventListener('click', () => {
-            let confirmed = confirm("a built-in confirm");
-            document.getElementsByTagName('output')[0].value = `The value returned by the confirm method is : ${confirmed}`;
+            let out_el = document.getElementsByTagName('output')[0];
+            out_el.innerHTML = "";
+
+            setTimeout(function () {
+              out_el.innerHTML = `The value returned by the confirm method is : ${confirm('a built-in confirm')}`;
+            }, 0)
           })
           document.getElementById('prompt').addEventListener('click', echo);
           document.getElementById('safeprompt').addEventListener('click', (e) => echo(e, true));
@@ -22,12 +26,16 @@
 
         function echo(e, safe=false) {
           let out_el = document.getElementsByTagName('output')[0];
-          let prompt_resp = prompt("What is your name?");
-          if (prompt_resp) {
-            out_el.value = safe ? sanitize_xss`Prompt result: ${prompt_resp}` : `Prompt result: ${prompt_resp}`;
-          } else {
-            out_el.value = "User didn't enter anything";
-          }
+          out_el.innerHTML = "";
+
+          setTimeout(function () {
+            let prompt_resp = prompt('What is your name?');
+            if (prompt_resp) {
+              out_el.innerHTML = safe ? sanitize_xss`Prompt result: ${prompt_resp}` : `Prompt result: ${prompt_resp}`;
+            } else {
+              out_el.innerHTML = 'User didn\'t enter anything';
+            }
+          }, 0)
         }
     </script>
   </head>
