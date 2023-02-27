@@ -1,0 +1,52 @@
+:root {
+    --primary-color: #1988C8;
+    --accent-color: #1dd0ec;
+    --secondary-color: #F77F50;
+
+    --sidenav-link-focus-color: #fff;
+    --sidenav-link-hover-color: #fff;
+
+    --section-name-color: #093149;
+    --section-break-color: #eaf4fa;
+
+    --icon-color: #093149;
+
+    --sidenav-size: 15rem;
+}
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+#crud-dialog {
+    color: black;
+    box-shadow: 0 0 6px 0 rgba(118, 13, 210, 0.5);
+    border: solid 4px transparent;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #21bff9, #ff8b48);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+#crud-dialog > form {
+    display: flex;
+    flex-direction: column;
+}
+
+#crud-dialog > h1 {
+    font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
+    text-transform: uppercase;
+
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+#crud-dialog > form *:nth-last-child(2) {
+    margin-bottom: 0.5rem;
+}
+
+#crud-dialog > form > #title {
+    
+}
