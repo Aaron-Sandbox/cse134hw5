@@ -18,7 +18,59 @@
     font-family: 'Lato', sans-serif;
 }
 
-#crud-dialog {
+body {
+    padding: 1rem;
+}
+
+h1 {
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+    font-size: 3rem;
+}
+
+#blogposts * {
+    margin: 0;
+}
+
+#blogposts > * {
+    margin-bottom: 1rem;
+}
+
+#blogposts > section {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 
+        "title control"
+        "date control"
+        "summary control";
+}
+
+#blogposts > section > section {
+    grid-area: control;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#blogposts h1 {
+    grid-area: title;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+#blogposts h2 {
+    grid-area: date;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2rem;
+}
+
+#blogposts p {
+    grid-area: summary;
+}
+
+#crud-dialog, #confirm-dialog {
     color: black;
     box-shadow: 0 0 6px 0 rgba(118, 13, 210, 0.5);
     border: solid 4px transparent;
@@ -47,6 +99,8 @@
     margin-bottom: 0.5rem;
 }
 
-#crud-dialog > form > #title {
-    
+#confirm-dialog > form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

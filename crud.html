@@ -13,10 +13,11 @@
   </head>
   <body>
     <main>
+        <h1>Blog Posts</h1>
+        <section id="blogposts"></section>
         <button id="add-post">Add</button>
-
         <dialog id="crud-dialog">
-            <h1>Create Post</h1>
+            <h1></h1>
             <form method="dialog">
                 <label for="Title">Title:</label>
                 <input type="text" name="title" id="title">
@@ -25,14 +26,21 @@
                 <input type="date" name="date" id="date">
                 
                 <label for="summary">Post Summary:</label>
-                <textarea name="summary" id="summary" rows="6" cols="60"></textarea>
+                <textarea name="summary" id="summary" rows="6" cols="60"></textarea >
 
                 <section>
                     <button value="cancel">Cancel</button>
                     <button value="save">Save</button>
                 </section>
             </form>
-        </dialog>      
+        </dialog>  
+        <dialog id="confirm-dialog">
+          <p></p>
+          <form method="dialog">
+              <button value="false">Cancel</button>
+              <button value="true">Confirm</button>
+          </form>
+      </dialog>    
     </main>
   </body>
 </html>

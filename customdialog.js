@@ -12,7 +12,7 @@ export function showConfirmDialog (message, rsltHandler) {
 
     const confirmDialog = document.getElementById('confirm-dialog');
     confirmDialog.showModal();
-    confirmDialog.addEventListener('close', (e) => rsltHandler(e, confirmDialog.returnValue));
+    confirmDialog.addEventListener('close', (e) => rsltHandler(e, confirmDialog.returnValue === "true"));
 }
 
 export function showPromptDialog (prompt, rsltHandler) {
