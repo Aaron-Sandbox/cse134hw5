@@ -31,6 +31,10 @@ h1 {
     margin: 0;
 }
 
+#blogposts:not(:empty) + p {
+    display: none;
+}
+
 #blogposts > * {
     margin-bottom: 1rem;
 }
