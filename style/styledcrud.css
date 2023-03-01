@@ -2,16 +2,6 @@
     --primary-color: #1988C8;
     --accent-color: #1dd0ec;
     --secondary-color: #F77F50;
-
-    --sidenav-link-focus-color: #fff;
-    --sidenav-link-hover-color: #fff;
-
-    --section-name-color: #093149;
-    --section-break-color: #eaf4fa;
-
-    --icon-color: #093149;
-
-    --sidenav-size: 15rem;
 }
 
 * {
@@ -25,6 +15,15 @@ body {
 h1 {
     font-family: 'Noto Sans', 'Arial', sans-serif;
     font-size: 3rem;
+}
+
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.125em;
+    padding: 10px;
+
+    fill: var(--secondary-color);
 }
 
 #blogposts * {
@@ -42,6 +41,16 @@ h1 {
         "title control"
         "date control"
         "summary control";
+
+    padding: 1rem;
+
+    box-shadow: 0 0 6px 0 rgba(118, 13, 210, 0.5);
+    border: solid 4px transparent;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, var(--primary-color), var(--secondary-color));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
 }
 
 #blogposts > section > section {
@@ -64,6 +73,8 @@ h1 {
 
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2rem;
+
+    color: var(--primary-color);
 }
 
 #blogposts p {
