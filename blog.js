@@ -5,6 +5,11 @@ let postCount = 0;
 
 function createPost(_e, data) {
     let node = document.getElementById('blogposts');
+
+    let noPostsMessage = node.querySelector('#blogposts > p');
+    if(noPostsMessage) {
+        noPostsMessage.remove();
+    }
     
     let postContainer = document.createElement('section');
     let controlContainer = document.createElement('section');
@@ -65,6 +70,13 @@ function editPost(e, data) {
 function removePost(post) {
     post.remove();
     postCount--;
+
+    if(!postCount) {
+        let node = document.getElementById('blogposts');
+        let noPosts = document.createElement('p');
+        noPosts.textContent = "No posts to show!";
+        node.appendChild(noPosts);
+    }
 }
 
 

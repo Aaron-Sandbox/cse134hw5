@@ -12,7 +12,7 @@ export function showConfirmDialog (message, rsltHandler) {
 
     const confirmDialog = document.getElementById('confirm-dialog');
     confirmDialog.showModal();
-    confirmDialog.addEventListener('close', (e) => rsltHandler(e, confirmDialog.returnValue === "true"));
+    confirmDialog.addEventListener('close', (e) => rsltHandler(e, confirmDialog.returnValue === "true"), {once: true});
 }
 
 export function showPromptDialog (prompt, rsltHandler) {
@@ -30,7 +30,7 @@ export function showPromptDialog (prompt, rsltHandler) {
         } else {
             rsltHandler(e, '');
         }
-    });
+    }, {once: true});
 }
 
 export function sanitize_xss(strings, str) {
