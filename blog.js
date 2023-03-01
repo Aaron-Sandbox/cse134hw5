@@ -1,6 +1,7 @@
 import {showCRUDDialog} from './crud-dialog.js';
-import {showConfirmDialog} from './customdialog.js'
+import {showConfirmDialog} from './customdialog.js';
 
+const LOCAL_STORAGE_KEY = "blogposts";
 let postCount = 0;
 
 function createPost(_e, data) {
@@ -51,6 +52,8 @@ function createPost(_e, data) {
 
     node.append(postContainer);
     postCount++;
+
+    updateLocalStorage()
 }
 
 function editPost(e, data) {
@@ -65,6 +68,8 @@ function editPost(e, data) {
     title.textContent = data.title;
     date.textContent = data.date;
     summary.textContent = data.summary;
+
+    updateLocalStorage()
 }
 
 function removePost(post) {
@@ -77,16 +82,42 @@ function removePost(post) {
         noPosts.textContent = "No posts to show!";
         node.appendChild(noPosts);
     }
+
+    updateLocalStorage();
 }
 
+function updateLocalStorage() {
+    let blogposts = [];
+    let node = document.getElementById('blogposts');
+    let postContainers = node.querySelectorAll('#blogposts > section');
+
+    postContainers.forEach((element) => {
+        let title = element.querySelector('h1');
+        let date = element.querySelector('h2');
+        let summary = element.querySelector('p');
+
+        blogposts.push({
+            title: title.textContent,
+            date: date.textContent,
+            summary: summary.textContent
+        });
+    });
+
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(blogposts));
+    console.log(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+}
 
 window.addEventListener('DOMContentLoaded', function () {
-    let stored = [
-        {title: "My First Blogpost", date: "2023-02-25", summary: "This is the text content of my first blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}, 
-        {title: "My Second Blogpost", date: "2023-02-26", summary: "This is the text content of my second blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}, 
-        {title: "My Third Blogpost", date: "2023-02-27", summary: "This is the text content of my third blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}
-    ];
+    let stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
+    if(!stored) {
+        stored = [
+            {title: "My First Blogpost", date: "2023-02-25", summary: "This is the text content of my first blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}, 
+            {title: "My Second Blogpost", date: "2023-02-26", summary: "This is the text content of my second blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}, 
+            {title: "My Third Blogpost", date: "2023-02-27", summary: "This is the text content of my third blogpost, which is about the creation of this CRUD application. Please enjoy reading!"}
+        ];
+    }
     stored.forEach((blogpost) => createPost(null, blogpost));
 
     document.getElementById('add-post').addEventListener('click', function () {
