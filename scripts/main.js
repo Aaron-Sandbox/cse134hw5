@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function highlightActiveNav () {
         sections.every((section) => {
             if(window.scrollY >= section.offsetTop // Scrolled past the top of the section
-                || window.scrollY >= document.documentElement.offsetHeight - window.offsetHeight) { // Or past last section
+                || window.scrollY + window.innerHeight + 1 >= document.body.scrollHeight) { // Or past last section
                 // Only change classList if we need to (scrolled to another section)
                 if(!idToNav[section.id].classList.contains('active')){
                     navLinks.forEach((navlink) => navlink.classList.remove('active'));
