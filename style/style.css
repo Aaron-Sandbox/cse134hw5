@@ -421,6 +421,7 @@ section#skills {
 }
 
 @media (max-width: 735px) {
+    /* Switch to vertical experience layout for smaller screens */
     .experience-entry {
         grid-template-areas: 
             "role"
@@ -443,6 +444,14 @@ section#skills {
 }
 
 @media (min-width: 650px) {
+    /* Project name and description in the same line
+    when screen wide enough */
+    .project > .divide-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
     .project > .divide-container::before {
         content: "";
         height: 1.2rem;
@@ -451,12 +460,6 @@ section#skills {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
-
-    .project > .divide-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
 }
 
 /* Correct font size for smaller screens */
@@ -464,9 +467,17 @@ section#skills {
     #about h1 {
         font-size: 4rem;
     }
-}
 
-@media (max-width: 600px) {
+    /* Reflow university sections to left-justified arrangement */
+    .university {
+        grid-template-areas:
+            "institution institution institution"
+            "degree spacer duration"
+            "description description description";
+        grid-template-columns: auto 0fr 1fr;
+    }
+
+    /* Style for dot spacer between degree and duration*/
     .university .duration::before {
         content: "•";
 
@@ -476,14 +487,6 @@ section#skills {
 
         margin-left: 0.5rem;
         margin-right: 0.5rem;
-    }
-
-    .university {
-        grid-template-areas:
-            "institution institution institution"
-            "degree spacer duration"
-            "description description description";
-        grid-template-columns: auto 0fr 1fr;
     }
 }
 
