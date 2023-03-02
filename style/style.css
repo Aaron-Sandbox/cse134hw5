@@ -4,7 +4,7 @@
     --secondary-color: #F77F50;
 
     --sidenav-link-focus-color: #fff;
-    --sidenav-link-hover-color: #fff;
+    --sidenav-link-hover-color: #1cf7ff;
 
     --section-name-color: #093149;
     --section-break-color: #eaf4fa;
@@ -70,6 +70,10 @@ span {
 
 .sidenav a:hover {
     color: var(--sidenav-link-hover-color);
+}
+
+.sidenav a.active {
+    color: var(--sidenav-link-focus-color);
 }
 
 /* Global Iconography */
@@ -386,6 +390,11 @@ section#skills {
 
 /* Switch to top navbar */
 @media (max-width: 984px){
+
+    .sidenav img, .sidenav picture{
+        display: none;
+    }
+
     .sidenav {
         position: fixed;
         z-index:1;
@@ -397,10 +406,6 @@ section#skills {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }
-
-    .sidenav img {
-        display: none;
     }
 
     main>section {
@@ -537,4 +542,3 @@ section#skills {
         display: none;
     }
 }
-
