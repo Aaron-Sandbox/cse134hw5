@@ -14,7 +14,6 @@
     --sidenav-size: 15rem;
 }
 
-
 /* Fix Arial spacing to match Lato */
 @font-face { 
     font-family: 'Lato-Arial';
@@ -186,7 +185,13 @@ section#experience {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+main > section > :first-child {
     padding-top: 3rem;
+}
+
+main > section > :last-child {
     padding-bottom: 3rem;
 }
 
@@ -255,8 +260,6 @@ section#education {
 
     justify-content: center;
     row-gap: 2rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
 }
 
 .university {
@@ -307,10 +310,6 @@ section#education {
     margin-bottom: 0.5rem;
 }
 
-#education li:last-child {
-    margin-bottom: 7rem;
-}
-
 .description strong {
     font-weight: bold;
 }
@@ -322,12 +321,6 @@ section#projects {
 
     justify-content: center;
     row-gap: 2rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-
-#projects > :last-child {
-    margin-bottom: 3rem;
 }
 
 .project {
@@ -378,9 +371,6 @@ section#skills {
     flex-direction: column;
     justify-content: center;
     row-gap: 1rem;
-
-    padding-top: 3rem;
-    padding-bottom: 3rem;
 }
 
 .skill-category h2 {
@@ -396,27 +386,37 @@ section#skills {
 
 /* Switch to top navbar */
 @media (max-width: 984px){
-    main>section {
-        margin-left: 0;
-    }
-
-    section#about {
-        min-height: calc(100vh + 4rem);
-    }
-
     .sidenav {
-        width: 100vw;
         position: fixed;
         z-index:1;
         top: 0;
+
+        height: 4rem;
+        width: 100vw;
+        
         display: flex;
         flex-direction: row;
-        height: 4rem;
         justify-content: space-around;
     }
 
     .sidenav img {
         display: none;
+    }
+
+    main>section {
+        margin-left: 0;
+        scroll-margin-top: 4rem;
+        min-height: calc(100vh - 4rem);
+    }
+
+    main::before {
+        content: "";
+        display: block;
+        height: 4rem;
+    }
+    
+    section#education > :last-child, section#skills > :last-child {
+        margin-bottom: 4rem;
     }
 }
 
@@ -466,6 +466,14 @@ section#skills {
 @media (max-width: 600px) {
     #about h1 {
         font-size: 4rem;
+    }
+
+    #about h2 {
+        font-size: 1.2rem;
+    }
+
+    #about h3 {
+        font-size: 1rem;
     }
 
     /* Reflow university sections to left-justified arrangement */
@@ -518,7 +526,15 @@ section#skills {
 
     #about h1 {
         font-size: 3rem;
-        margin-bottom: 1rem; 
+        margin-bottom: -0.5rem; 
+    }
+
+    #about .divide-container {
+        flex-direction: column;
+    }
+
+    #about .divide-container::before {
+        display: none;
     }
 }
 
