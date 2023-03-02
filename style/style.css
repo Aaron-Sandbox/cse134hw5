@@ -47,35 +47,12 @@ span {
 
     text-align: center;
 
-    display: grid;
-    grid-template-rows: 25% 50% 15% 10%;
-    grid-template-areas:
-        "."
-        "nav-main"
-        "nav-secondary"
-        "nav-bottom";
-}
-
-.sidenav > div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     gap: 1.2rem;
-}
-
-.sidenav > .nav-main {
-    grid-area: nav-main;
-    flex-direction: column;
-}
-
-.sidenav > .nav-secondary {
-    grid-area: nav-secondary;
-    flex-direction: column;
-}
-
-.sidenav > .nav-bottom {
-    grid-area: nav-bottom;
-    flex-direction: row;
 }
 
 .sidenav img {
@@ -125,105 +102,6 @@ main>section {
     min-height: 100vh;
 }
 
-@media (max-width: 984px){
-    main>section {
-        margin-left: 0;
-    }
-
-    section#about {
-        min-height: calc(100vh + 4rem);
-    }
-
-    .sidenav {
-        width: 100vw;
-        position: fixed;
-        z-index:1;
-        top: 0;
-        display: flex;
-        flex-direction: row;
-        height: 4rem;
-        justify-content: space-around;
-    }
-
-    .sidenav img {
-        border-radius: 10px;
-        border: 1px solid var(--accent-color)
-    }
-
-    .sidenav > .nav-main, .sidenav > .nav-secondary, .sidenav > .nav-bottom {
-        flex-direction: row;
-    }
-}
-
-@media (max-width: 825px) {
-    .sidenav img {
-        display: none;
-    }
-}
-
-@media (max-width: 720px) {
-    .sidenav > .nav-bottom {
-        display: none;
-    }
-}
-
-@media (max-width: 600px) {
-    .sidenav > .nav-secondary {
-        display: none;
-    }
-
-    #about h1 {
-        font-size: 4rem !important;
-    }
-}
-
-@media (max-width: 430px) {
-    .sidenav > .nav-main > a:first-of-type {
-        display: none;
-    }
-
-    #education li:last-child {
-        margin-bottom: 0rem !important;
-    }
-
-    #projects :last-child {
-        margin-bottom: 0rem !important;
-    }
-
-    .experience-entry {
-        margin-bottom: 0rem !important;
-    }
-
-    .university {
-        grid-template-areas:
-            "institution"
-            "degree"
-            "duration"
-            "description" !important;
-    }
-
-    .university .duration::before {
-        display: none;
-    }
-}
-
-@media (max-width: 390px) {
-    .sidenav > .nav-main > a:last-of-type {
-        display: none;
-    }
-
-    main>section {
-        padding: 1rem;
-        min-height: unset;
-    }
-
-    #about h1 {
-        font-size: 3rem !important;
-        margin-bottom: 1rem !important; 
-    }
-    
-}
-
 main > section > h1 {
     font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
     font-size: 3rem;
@@ -231,7 +109,7 @@ main > section > h1 {
 
 /* About */
 section#about {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -243,24 +121,64 @@ section#about {
     margin-bottom: -1rem;
 }
 
-#about h3 {
+#about h2, #about h3 {
     font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
     text-transform: uppercase;
     font-weight: 600;
 }
 
-#about h1+h3 {
+/* Location and email in about */
+#about .divide-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin-bottom: 2rem;
+}
+
+#about .divide-container::before {
+    content: "•";
+    font-size: 1.2rem;
+
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+#about a, #about a:visited {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* About text adjustments */
+#about h2 {
     font-size: 1.5rem;
 }
 
-#about h1+h3+h3 {
+#about h3 {
     font-size: 1.2rem;
-    margin-bottom: 3rem;
 }
 
 #about p {
-    margin-bottom: 7rem;
+    margin-bottom: 2.5rem;
     max-width: 80ch;
+}
+
+/* About Iconography */
+.icon-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    margin-top: 1rem;
+}
+
+#about .icon {
+    padding: 0px;
+}
+
+/* Size adjustment for mail icon */
+.mail {
+    width: 1.9rem;
 }
 
 /* Experience */
@@ -330,28 +248,6 @@ section#experience {
     margin-bottom: unset;
 }
 
-@media (max-width: 735px) {
-    .experience-entry {
-        grid-template-areas: 
-            "role"
-            "company"
-            "description"
-            "duration"
-            "location";
-    }
-
-    .experience-entry .duration {
-        justify-self: left;
-        margin-left: 0;
-        margin-top: 1rem;
-    }
-    
-    .experience-entry .location {
-        justify-self: left;
-        margin-left: 0;
-    }
-}
-
 /* Education */
 section#education {
     display: flex;
@@ -388,27 +284,6 @@ section#education {
     font-weight: 400;
     text-transform: uppercase;
     color: var(--secondary-color);
-}
-
-@media (max-width: 600px) {
-    .university .duration::before {
-        content: "•";
-
-        font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
-        font-size: 1.2rem;
-        color: var(--section-name-color);
-
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
-    .university {
-        grid-template-areas:
-            "institution institution institution"
-            "degree spacer duration"
-            "description description description";
-        grid-template-columns: auto 0fr 1fr;
-    }
 }
 
 .university > .role { 
@@ -461,7 +336,7 @@ section#projects {
     align-items: flex-start;
 }
 
-.project > .divide-container {
+.project .divide-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -469,23 +344,6 @@ section#projects {
 
 .divide-container *:first-child {
     order: -1;
-}
-
-@media (min-width: 650px) {
-    .project > .divide-container::before {
-        content: "";
-        height: 1.2rem;
-        border: 1px solid var(--accent-color);
-        align-self: center;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
-    .project > .divide-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
 }
 
 .project .name {
@@ -535,3 +393,129 @@ section#skills {
 .skill-category p {
     color: var(--section-name-color);
 }
+
+/* Switch to top navbar */
+@media (max-width: 984px){
+    main>section {
+        margin-left: 0;
+    }
+
+    section#about {
+        min-height: calc(100vh + 4rem);
+    }
+
+    .sidenav {
+        width: 100vw;
+        position: fixed;
+        z-index:1;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        height: 4rem;
+        justify-content: space-around;
+    }
+
+    .sidenav img {
+        display: none;
+    }
+}
+
+@media (max-width: 735px) {
+    .experience-entry {
+        grid-template-areas: 
+            "role"
+            "company"
+            "description"
+            "duration"
+            "location";
+    }
+
+    .experience-entry .duration {
+        justify-self: left;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .experience-entry .location {
+        justify-self: left;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 650px) {
+    .project > .divide-container::before {
+        content: "";
+        height: 1.2rem;
+        border: 1px solid var(--accent-color);
+        align-self: center;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .project > .divide-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* Correct font size for smaller screens */
+@media (max-width: 600px) {
+    #about h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .university .duration::before {
+        content: "•";
+
+        font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
+        font-size: 1.2rem;
+        color: var(--section-name-color);
+
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .university {
+        grid-template-areas:
+            "institution institution institution"
+            "degree spacer duration"
+            "description description description";
+        grid-template-columns: auto 0fr 1fr;
+    }
+}
+
+/* Correct spacing for smaller screens */
+@media (max-width: 430px) {
+    #education li:last-child, #projects :last-child, .experience-entry{
+        margin-bottom: 0rem;
+    }
+
+    /* Reflow university entries to vertical arrangement */
+    .university {
+        grid-template-areas:
+            "institution"
+            "degree"
+            "duration"
+            "description";
+    }
+
+    .university .duration::before {
+        display: none;
+    }
+}
+
+@media (max-width: 390px) {
+    main>section {
+        padding: 1rem;
+        min-height: unset;
+    }
+
+    #about h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem; 
+    }
+}
+
