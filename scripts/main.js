@@ -1,3 +1,4 @@
+const NAV_HIGHLIGHT_UPDATE_PERIOD = 150;
 window.addEventListener('DOMContentLoaded', () => {
     // Get sections and nav links
     const sections = [...document.querySelectorAll('main > section')].reverse(); // Search sections from end
@@ -24,5 +25,5 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('scroll', _.throttle(highlightActiveNav, 150));
+    window.addEventListener('scroll', _.throttle(highlightActiveNav, NAV_HIGHLIGHT_UPDATE_PERIOD));
 })
