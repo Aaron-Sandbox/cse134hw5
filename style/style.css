@@ -522,6 +522,10 @@ section#skills {
 /* Correct font size for smaller screens */
 @media (max-width: 600px) {
 
+    #about .divide-container::before {
+        font-size: 1rem;
+    }
+
     .sidenav {
         display: flex;
     }
