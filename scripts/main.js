@@ -10,6 +10,8 @@ window.addEventListener('DOMContentLoaded', () => {
         idToNav[section.id] = document.querySelector(`.nav-main a[href*=${section.id}]`);
     })
 
+    highlightActiveNav();
+
     function highlightActiveNav () {
         // Media breakpoint for switching to topbar (needs additional offset on scroll height)
         let offsetHeight = window.innerWidth <= 984 ? 4 * parseFloat(getComputedStyle(document.documentElement).fontSize) : 0; 
