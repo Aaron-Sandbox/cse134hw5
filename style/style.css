@@ -191,7 +191,7 @@ section#about {
 
 #about p {
     margin-bottom: 2.5rem;
-    max-width: 80ch;
+    max-width: 120ch;
 }
 
 /* About Iconography */
@@ -279,6 +279,7 @@ main > section > :last-child {
 
 .experience-entry li {
     margin-bottom: 0.5rem;
+    max-width: 120ch;
 }
 
 .experience-entry li:last-child {
