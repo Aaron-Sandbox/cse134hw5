@@ -54,13 +54,28 @@ span {
     gap: 1.2rem;
 }
 
+.sidenav > h1 {
+    display: none;
+}
+
 .sidenav img {
     width: 50%;
     border-radius: 2rem;
     border: 5px solid var(--accent-color);
 }
 
-.sidenav a {
+.sidenav > .nav-main {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.sidenav > .nav-main a {
     color: var(--accent-color);
     text-decoration: none;
     text-transform: uppercase;
@@ -68,12 +83,25 @@ span {
     font-weight: 600;
 }
 
-.sidenav a:hover {
+.sidenav > .nav-main a:hover {
     color: var(--sidenav-link-hover-color);
 }
 
-.sidenav a.active {
+.sidenav > .nav-main a.active {
     color: var(--sidenav-link-focus-color);
+}
+
+.sidenav > .nav-main li {
+    display: inline;
+    margin-bottom: 0.6rem;
+}
+
+.sidenav > a {
+    display: none;
+}
+
+.sidenav .icon {
+    fill: white;
 }
 
 /* Global Iconography */
@@ -388,33 +416,22 @@ section#skills {
     color: var(--section-name-color);
 }
 
-.logo {
-    display: none;
-}
-
-.sidenav > .nav-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    align-items: center;
-}
-
-.sidenav > .logo {
-    color: white;
-    text-decoration: none;
-    font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
-    font-weight: 600;
-}
-
 /* Switch to top navbar */
 @media (max-width: 984px){
 
-    .sidenav img, .sidenav picture{
+    .sidenav img, .sidenav picture {
         display: none;
     }
 
-    .sidenav > .logo {
+    .sidenav > h1 {
         display: block;
+
+        color: white;
+        text-decoration: none;
+        font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
+        font-weight: 600;
+
+        margin-left: 3rem;
     }
 
     .sidenav {
@@ -427,11 +444,18 @@ section#skills {
         
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .sidenav > .nav-main {
         flex-direction: row;
+        margin-right: 3rem;
+    }
+
+    .sidenav > .nav-main > li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
     }
 
     main>section {
@@ -496,13 +520,21 @@ section#skills {
 /* Correct font size for smaller screens */
 @media (max-width: 600px) {
 
+    .sidenav {
+        display: flex;
+    }
+
     .sidenav > .nav-main{
         display: none;
     }
 
-    .sidenav {
-        justify-content: flex-start;
-        padding-left: 1rem;
+    .sidenav > a {
+        display: block;
+        margin-right: 3rem;
+    }
+
+    .sidenav > a > svg {
+        padding: 0;
     }
 
     #about h1 {
@@ -568,6 +600,15 @@ section#skills {
     #about h1 {
         font-size: 3rem;
         margin-bottom: -0.5rem; 
+    }
+
+    .sidenav > h1 {
+        margin-left: 1rem;
+    }
+
+    .sidenav > a {
+        display: block;
+        margin-right: 1rem;
     }
 
     #about .divide-container {
