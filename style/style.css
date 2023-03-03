@@ -388,11 +388,33 @@ section#skills {
     color: var(--section-name-color);
 }
 
+.logo {
+    display: none;
+}
+
+.sidenav > .nav-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.sidenav > .logo {
+    color: white;
+    text-decoration: none;
+    font-family: 'Source Sans Pro', 'Trebuchet', sans-serif;
+    font-weight: 600;
+}
+
 /* Switch to top navbar */
 @media (max-width: 984px){
 
     .sidenav img, .sidenav picture{
         display: none;
+    }
+
+    .sidenav > .logo {
+        display: block;
     }
 
     .sidenav {
@@ -406,6 +428,10 @@ section#skills {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    .sidenav > .nav-main {
+        flex-direction: row;
     }
 
     main>section {
@@ -469,6 +495,16 @@ section#skills {
 
 /* Correct font size for smaller screens */
 @media (max-width: 600px) {
+
+    .sidenav > .nav-main{
+        display: none;
+    }
+
+    .sidenav {
+        justify-content: flex-start;
+        padding-left: 1rem;
+    }
+
     #about h1 {
         font-size: 4rem;
     }

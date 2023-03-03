@@ -2,12 +2,12 @@ const NAV_HIGHLIGHT_UPDATE_PERIOD = 150;
 window.addEventListener('DOMContentLoaded', () => {
     // Get sections and nav links
     const sections = [...document.querySelectorAll('main > section')].reverse(); // Search sections from end
-    const navLinks = document.querySelectorAll('main > nav > a');
+    const navLinks = document.querySelectorAll('main > .sidenav > .nav-main > a');
 
     // Map section IDs to the corresponding nav link, to avoid repeated DOM queries
     let idToNav = {};
     sections.forEach((section) => {
-        idToNav[section.id] = document.querySelector(`main > nav > a[href*=${section.id}]`);
+        idToNav[section.id] = document.querySelector(`main > .sidenav > .nav-main > a[href*=${section.id}]`);
     })
 
     function highlightActiveNav () {
