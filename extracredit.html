@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Aaron Yu | Web Component</title>
+  </head>
+  <body>
+    <main>
+        <button-count-react></button-count-react>
+        <button-count-vue></button-count-vue>
+    </main>
+    <script type="module">
+        import React from 'https://esm.sh/react'
+        import ReactWebComponent from 'https://esm.sh/react-web-component'
+
+        const e = React.createElement;
+        class ButtonCount extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { count: 0 };
+            }
+
+            render() {
+                return e(
+                    'button', 
+                    { onClick: () => {this.setState({ count : this.state.count + 1 })} }, 
+                    `React Times Clicked: ${this.state.count}`
+                );
+            }
+        }
+
+        ReactWebComponent.create(e(ButtonCount), 'button-count-react');
+    </script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="module">
+        const ButtonCountVue = Vue.defineCustomElement({
+            template: `<button @click="count++">Vue Times Clicked: {{ count }}</button>`,
+            data() {
+                return {
+                    count: 0
+                }
+            }
+        })
+        customElements.define('button-count-vue', ButtonCountVue);
+    </script>
+  </body>
+</html>
